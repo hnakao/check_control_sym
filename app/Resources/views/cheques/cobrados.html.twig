@@ -1,0 +1,307 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script>
+        var cheques = [];
+        function push_message(a, b, c) {
+            var element = {'id': a, 'numero': c, 'dias': b};
+            cheques.push(element);
+        }
+    </script>
+    <h1>COBRADOS</h1>
+    <div class="ibox-content">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered dataTables-example">
+                <thead>
+                    <tr>
+                        <th>No. Cheque</th>
+                        <th>Banco</th>
+                        <th>Beneficiario</th>
+                        <th>Valor</th>
+                        <th>Emicion</th>
+                        <th>A la Fecha</th>
+                        <th>Pos Fechado</th>
+                        <th>Por Concepto de</th>
+                        <th>Observacion</th>  
+                        <th>Cobrado</th>
+                        <th>Restan</th>  
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cheque in cheques %}
+                        {%if cheque.diasRestantes > 20%}
+                            <tr>
+                                <td><a href="{{ path('cheques_show', { 'id': cheque.id }) }}">{{ cheque.checkNumber }}</a></td>
+                                <td>{{ cheque.bancoId }}</td>
+                                <td>{{ cheque.beneficiary }}</td>
+                                <td>{{ cheque.valor }}</td>
+
+
+                                <td>{{ cheque.emicionDate|date('Y-m-d') }}</td>
+
+                                <td>{%if cheque.atDate%}{{ cheque.atDate|date('Y-m-d') }}{%endif%}</td>
+                                <td>{%if cheque.postDate%}{{ cheque.postDate|date('Y-m-d') }}{%endif%}</td>
+                                <td>{{ cheque.concept }}</td>
+                                <td>{{ cheque.observaciones }}</td>
+                                <td>{{ cheque.pagado }}</td>
+                                {%if cheque.pagado != "si"%}<td class="bg-primary">{{ cheque.diasRestantes }}{{" dias"}}</td> {%else%}<td></td>{%endif%}
+                                <td>
+                                    <div class="btn-group">
+                                        <!--a class="btn-default btn-sm btn" type="button"  href="#" onclick="Editar({{cheque.id}});">
+                                            <span class="fa fa-eye"></span> 
+                                        </a-->
+                                        <a class="btn-default btn-sm btn" type="button"  href="#" onclick="Editar({{cheque.id}});" >
+                                            <span class="fa fa-edit"></span>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        {%endif%}
+                        {%if cheque.diasRestantes < 10 and cheque.diasRestantes >= 5 %}
+                            <tr>
+                                <td><a href="{{ path('cheques_show', { 'id': cheque.id }) }}">{{ cheque.checkNumber }}</a></td>
+                                <td>{{ cheque.bancoId }}</td>
+                                <td>{{ cheque.beneficiary }}</td>
+                                <td>{{ cheque.valor }}</td>
+
+
+                                <td>{{ cheque.emicionDate|date('Y-m-d') }}</td>
+
+                                <td>{%if cheque.atDate%}{{ cheque.atDate|date('Y-m-d') }}{%endif%}</td>
+                                <td>{%if cheque.postDate%}{{ cheque.postDate|date('Y-m-d') }}{%endif%}</td>
+                                <td>{{ cheque.concept }}</td>
+                                <td>{{ cheque.observaciones }}</td>
+                                <td>{{ cheque.pagado }}</td>
+                                {%if cheque.pagado != "si"%}<td class="bg-warning">{{ cheque.diasRestantes }}{{" dias"}}</td> {%else%}<td></td>{%endif%}
+                                <td>
+                                    <div class="btn-group">
+                                        <!--a class="btn-default btn-sm btn" type="button"  href="{{ path('cheques_show', { 'id': cheque.id }) }}">
+                                            <span class="fa fa-eye"></span> 
+                                        </a-->
+                                        <a class="btn-default btn-sm btn" type="button"  href="#" onclick="Editar({{cheque.id}});" >
+                                            <span class="fa fa-edit"></span>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        {%endif%}
+                        {%if cheque.diasRestantes < 5 %}
+                            {%if cheque.pagado != "si"%}
+                            <script>
+                                push_message({{cheque.id}}, {{cheque.diasRestantes}},{{cheque.checkNumber}} )
+                            </script>
+                            <tr>
+                            {%endif%}
+                            <td><a href="{{ path('cheques_show', { 'id': cheque.id }) }}">{{ cheque.checkNumber }}</a></td>
+                            <td>{{ cheque.bancoId }}</td>
+                            <td>{{ cheque.beneficiary }}</td>
+                            <td>{{ cheque.valor }}</td>
+
+
+                            <td>{{ cheque.emicionDate|date('Y-m-d') }}</td>
+
+                            <td>{%if cheque.atDate%}{{ cheque.atDate|date('Y-m-d') }}{%endif%}</td>
+                            <td>{%if cheque.postDate%}{{ cheque.postDate|date('Y-m-d') }}{%endif%}</td>
+                            <td>{{ cheque.concept }}</td>
+                            <td>{{ cheque.observaciones }}</td>
+                            <td>{{ cheque.pagado }}</td>
+                            {%if cheque.pagado != "si"%}<td class="bg-danger">{{ cheque.diasRestantes }}{{" dias"}}</td> {%else%}<td></td>{%endif%}
+                            <td>
+                                <div class="btn-group">
+                                    <!--a class="btn-default btn-sm btn" type="button"  href="{{ path('cheques_show', { 'id': cheque.id }) }}">
+                                        <span class="fa fa-eye"></span> 
+                                    </a-->
+                                    <a class="btn-default btn-sm btn" type="button"  href="#" onclick="Editar({{cheque.id}});" >
+                                        <span class="fa fa-edit"></span>
+                                    </a>
+                                </div>
+
+                            </td>
+                        </tr>
+                    {%endif%}
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal6">Nuevo Cheque</a>
+
+        </div>
+    </div>
+
+
+    <div class="modal inmodal fade" id="EditarChekeModal" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog" style="width: 1200px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Editar</h4>
+                </div>
+                <div class="modal-body" id="editar_content">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog " style="width: 1200px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Nuevo Cheque</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="appbundle_cheques" action="{{ path("cheques_new") }}" method="post">
+                        <table style="border:1px solid black;border-collapse:collapse; width:100%">
+                            <thead>
+
+                                <tr>
+
+                                    <th style="width: 100px"></th>      
+
+                                    <th style="width: 100px"></th>      
+                                    <th style="width: 100px"></th>      
+                                    <th style="width: 100px"></th>      
+                                    <th style="width: 100px"></th>      
+                                    <th style="width: 100px"></th>      
+                                    <th style="width: 100px"></th>
+                                    <th style="width: 100px"></th>
+
+
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th style="border:1px solid black;">No. CHEQUE</th> 
+                                    <th style="border:1px solid black;">BENEFICIARIO</th> 
+                                    <th style="border:1px solid black;">VALOR</th> 
+                                    <th style="border:1px solid black;" colspan="3" >
+                                        <div class="" style="width:100%">
+                                            <div style="float: left;width: 40px; display:inline; width: 100%">FECHA DE COBRO</div>
+                                            <div style="float: left;width: 40px;min-height:20px;border-top:1px solid black;width: 33.3%">EMISIÓN</div>
+                                            <div style="float: left;width: 40px;min-height:20px;border-left:1px solid black;border-top:1px solid black;width: 33.3%">A LA FECHA</div>
+                                            <div style="float: left;width: 50px;min-height:20px;border-left:1px solid black;border-top:1px solid black;width: 33.3%">POST-FECHADO</div>
+                                        </div>
+                                    </th>  
+
+                                    <th style="border:1px solid black;text-align: left;">POR CONCEPTO DE</th>      
+
+                                    <th style="border:1px solid black;text-align: left">OBSERVACION</th>   
+
+
+                                </tr>
+                                <tr>
+
+
+                                    <th  style="border:1px solid black;text-align: left;"> 
+                                        {{ form_widget(form.checkNumber, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th>      
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.beneficiary, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th>      
+
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.valor, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th> 
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.emicionDate, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th> 
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.atDate, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th> 
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.postDate, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th> 
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.concept, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th> 
+                                    <th  style="border:1px solid black;text-align: left;">
+                                        {{ form_widget(form.observaciones, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                                    </th> 
+
+
+                                </tr>            
+
+                            </tbody>
+                        </table> 
+
+
+                        {{ form_widget(form._token) }}
+                        <div class="form-group" style="width:300px">
+                            <label>Banco</label>
+                            {{ form_widget(form.bancoId, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                        </div>
+                        <button type="submit" class="btn btn-primary block " style="margin-top: 10px">Añadir</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset('assets/inspinia/') }}js/jquery-3.1.1.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+                                        $(document).ready(function () {
+                                            $('.dataTables-example').DataTable({
+                                                pageLength: 25,
+                                                responsive: true,
+                                                dom: '<"html5buttons"B>lTfgitp',
+                                                buttons: [
+                                                    {extend: 'csv'}
+                                                ]
+
+                                            });
+                                        });
+    </script>
+    <script>
+        $('#at_date').on('click', function () {  // capture the click
+            $("#appbundle_cheques_postDate").val('');
+        });
+        $('#post_date').on('click', function () {  // capture the click
+            $("#appbundle_cheques_atDate").val('');
+        });
+    </script>
+    <script>
+        function Editar(id) {
+            var ruta = "{{ path('cheques_index')}}" + id + "/edit";
+            var controlador = ruta.toString();
+            $.ajax({url: controlador,
+                type: 'get',
+                data: $(this).serialize(),
+                async: true // veamos con true a ver que pasa
+            })
+
+                    .done(function (html) {
+
+                        $("#editar_content").html(html);
+                        $("#EditarChekeModal").show("fade");
+                        $('#EditarChekeModal').modal('show');
+                    })
+                    .fail(function (error) {
+                        console.log("error en mostrar pedido");
+                        //ocultar_loader();
+                    });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            //alert(JSON.stringify(cheques));
+            $.each(cheques, function (i, item) {
+                alertify.alert("Cheque # " + item.numero + " con " + item.dias + " dìas restantes");
+            });
+        });
+    </script>
+{% endblock %}

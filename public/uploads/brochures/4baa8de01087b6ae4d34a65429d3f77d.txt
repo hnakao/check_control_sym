@@ -1,0 +1,6 @@
+type,description,contact number,email address,customer name,delivery date,delivery address,driver username,tags,order_number,waypoints
+pickup,-CH,12122654500,none@none.com,Ryan/Chelsea Dr. Patterson,2017-09-15 16:00:00,645 10th Avenue, New York, NY,0,2
+pickupo,-CH,12122654500,none@none.com,Ryan/Chelsea Dr. Patterson,2017-09-15 16:00:00,645 10th Avenue, New York, NY,0,
+pickupo,-CH,12122654500,none@none.com,Ryan/Chelsea Dr. Patterson,2017-09-15 16:00:00,645 10th Avenue, New York, NY,0,
+pickup,-CH,14153435637,joe@vetpronto.com,Ryan/Chelsea Dr. Patterson,2017-09-15 16:00:00,645 10th Avenue, New York, NY,0,1
+pickup,-CH,14153435637,joe@vetpronto.com,Ryan/Chelsea Dr. Patterson,2017-09-15 16:00:00,645 10th Avenue, New York, NY,0,

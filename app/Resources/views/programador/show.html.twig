@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Programador</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ programador.id }}</td>
+            </tr>
+            <tr>
+                <th>Ci</th>
+                <td>{{ programador.ci }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ programador.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido1</th>
+                <td>{{ programador.apellido1 }}</td>
+            </tr>
+            <tr>
+                <th>Apellido2</th>
+                <td>{{ programador.apellido2 }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_nacimiento</th>
+                <td>{% if programador.fechanacimiento %}{{ programador.fechanacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{{ programador.sexo }}</td>
+            </tr>
+            <tr>
+                <th>Certificado</th>
+                <td>{% if programador.certificado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Foto_path</th>
+                <td>{{ programador.fotopath }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('programador_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('programador_edit', { 'id': programador.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

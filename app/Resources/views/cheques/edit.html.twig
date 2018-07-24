@@ -1,0 +1,101 @@
+
+<form name="appbundle_cheques" action="{{ path('cheques_edit', { 'id': cheque.id }) }}" method="post">
+    <table style="border:1px solid black;border-collapse:collapse; width:100%">
+        <thead>
+
+            <tr>
+
+                <th style="width: 100px"></th>      
+
+                <th style="width: 100px"></th>      
+                <th style="width: 100px"></th>      
+                <th style="width: 100px"></th>      
+                <th style="width: 100px"></th>      
+                <th style="width: 100px"></th>      
+                <th style="width: 100px"></th>
+                <th style="width: 100px"></th>
+
+
+            </tr>
+
+
+        </thead>
+        <tbody>
+            <tr>
+                <th style="border:1px solid black;">No. CHEQUE</th> 
+                <th style="border:1px solid black;">BENEFICIARIO</th> 
+                <th style="border:1px solid black;">VALOR</th> 
+                <th style="border:1px solid black;" colspan="3" >
+                    <div class="" style="width:100%">
+                        <div style="float: left;width: 40px; display:inline; width: 100%">FECHA DE COBRO</div>
+                        <div style="float: left;width: 40px;min-height:20px;border-top:1px solid black;width: 33.3%">EMISIÓN</div>
+                        <div style="float: left;width: 40px;min-height:20px;border-left:1px solid black;border-top:1px solid black;width: 33.3%">A LA FECHA</div>
+                        <div style="float: left;width: 50px;min-height:20px;border-left:1px solid black;border-top:1px solid black;width: 33.3%">POST-FECHADO</div>
+                    </div>
+                </th>  
+
+                <th style="border:1px solid black;text-align: left;">POR CONCEPTO DE</th>      
+
+                <th style="border:1px solid black;text-align: left">OBSERVACION</th>   
+
+
+            </tr>
+            <tr>
+
+
+                <th  style="border:1px solid black;text-align: left;"> 
+                    {{ form_widget(edit_form.checkNumber, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th>      
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.beneficiary, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th>      
+
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.valor, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th> 
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.emicionDate, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th> 
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.atDate, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th> 
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.postDate, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th> 
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.concept, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th> 
+                <th  style="border:1px solid black;text-align: left;">
+                    {{ form_widget(edit_form.observaciones, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+                </th> 
+
+
+            </tr>            
+
+        </tbody>
+    </table> 
+
+    {{ form_widget(edit_form._token) }}
+    <div class="form-group" style="width:300px">
+        <label>Banco</label>
+        {{ form_widget(edit_form.bancoId, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+    </div>
+    <div class="form-group" style="width:300px">
+        <label>Pagado</label>
+        {{ form_widget(edit_form.pagado, { 'attr': {'class': 'form-control', 'placeholder':""} }) }}
+    </div>
+    <button type="submit" class="btn btn-primary block" style="margin-top: 10px">Actualizar</button>
+    {{ form_widget(edit_form._token) }}
+</form>
+
+<script>
+
+    $('#at_date').on('click', function () {  // capture the click
+        $("#appbundle_cheques_postDate").val('');
+    });
+    $('#post_date').on('click', function () {  // capture the click
+        $("#appbundle_cheques_atDate").val('');
+    });
+
+</script>
+

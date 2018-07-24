@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Programadors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ci</th>
+                <th>Nombre</th>
+                <th>Apellido1</th>
+                <th>Apellido2</th>
+                <th>Fecha_nacimiento</th>
+                <th>Sexo</th>
+                <th>Certificado</th>
+                <th>Foto_path</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programador in programadors %}
+            <tr>
+                <td><a href="{{ path('programador_show', { 'id': programador.id }) }}">{{ programador.id }}</a></td>
+                <td>{{ programador.ci }}</td>
+                <td>{{ programador.nombre }}</td>
+                <td>{{ programador.apellido1 }}</td>
+                <td>{{ programador.apellido2 }}</td>
+                <td>{% if programador.fechanacimiento %}{{ programador.fechanacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ programador.sexo }}</td>
+                <td>{% if programador.certificado %}Yes{% else %}No{% endif %}</td>
+                <td>{{ programador.fotopath }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('programador_show', { 'id': programador.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('programador_edit', { 'id': programador.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('programador_new') }}">Create a new programador</a>
+        </li>
+    </ul>
+{% endblock %}

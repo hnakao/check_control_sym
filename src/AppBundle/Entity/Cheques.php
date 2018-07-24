@@ -1,0 +1,470 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cheques
+ *
+ * @ORM\Table(name="cheques")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ChequesRepository")
+ */
+class Cheques
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="check_number", type="string", length=255)
+     */
+    private $checkNumber;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beneficiary", type="string", length=255 ,nullable=true)
+     */
+    private $beneficiary;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="concept", type="string", length=255 ,nullable=true)
+     */
+    private $concept;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="notes", type="string", length=255 ,nullable=true)
+     */
+    private $notes;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="valor", type="decimal",nullable=true)
+     */
+    private $valor;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Bancos")
+     * @ORM\JoinColumn(name="banco_id", referencedColumnName="id", onDelete="CASCADE" ,nullable=true)
+     *  
+     */
+    protected $bancoId;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
+     *  
+     */
+    protected $userId;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="emision_date", type="date", nullable=true)
+     */
+    private $emicionDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="at_date", type="date", nullable=true)
+     */
+    private $atDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="post_date", type="date", nullable=true)
+     */
+    private $postDate;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=255 ,nullable=true)
+     */
+    private $estado;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pagado", type="string", length=255 ,nullable=true)
+     */
+    private $pagado;  
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="dias_restantes", type="string", length=255, nullable=true)
+     */
+    private $diasRestantes;  
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observaciones", type="string", length=255 ,nullable=true)
+     */
+    private $observaciones;
+
+    
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set checkNumber
+     *
+     * @param string $checkNumber
+     *
+     * @return Cheques
+     */
+    public function setCheckNumber($checkNumber)
+    {
+        $this->checkNumber = $checkNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get checkNumber
+     *
+     * @return string
+     */
+    public function getCheckNumber()
+    {
+        return $this->checkNumber;
+    }
+
+    /**
+     * Set beneficiary
+     *
+     * @param string $beneficiary
+     *
+     * @return Cheques
+     */
+    public function setBeneficiary($beneficiary)
+    {
+        $this->beneficiary = $beneficiary;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficiary
+     *
+     * @return string
+     */
+    public function getBeneficiary()
+    {
+        return $this->beneficiary;
+    }
+
+    /**
+     * Set concept
+     *
+     * @param string $concept
+     *
+     * @return Cheques
+     */
+    public function setConcept($concept)
+    {
+        $this->concept = $concept;
+
+        return $this;
+    }
+
+    /**
+     * Get concept
+     *
+     * @return string
+     */
+    public function getConcept()
+    {
+        return $this->concept;
+    }
+
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     *
+     * @return Cheques
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    /**
+     * Get notes
+     *
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set emicionDate
+     *
+     * @param \DateTime $emicionDate
+     *
+     * @return Cheques
+     */
+    public function setEmicionDate($emicionDate)
+    {
+        $this->emicionDate = $emicionDate;
+
+        return $this;
+    }
+
+    /**
+     * Get emicionDate
+     *
+     * @return \DateTime
+     */
+    public function getEmicionDate()
+    {
+        return $this->emicionDate;
+    }
+
+    /**
+     * Set atDate
+     *
+     * @param \DateTime $atDate
+     *
+     * @return Cheques
+     */
+    public function setAtDate($atDate)
+    {
+        $this->atDate = $atDate;
+
+        return $this;
+    }
+
+    /**
+     * Get atDate
+     *
+     * @return \DateTime
+     */
+    public function getAtDate()
+    {
+        return $this->atDate;
+    }
+
+    /**
+     * Set postDate
+     *
+     * @param \DateTime $postDate
+     *
+     * @return Cheques
+     */
+    public function setPostDate($postDate)
+    {
+        $this->postDate = $postDate;
+
+        return $this;
+    }
+
+    /**
+     * Get postDate
+     *
+     * @return \DateTime
+     */
+    public function getPostDate()
+    {
+        return $this->postDate;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     *
+     * @return Cheques
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set pagado
+     *
+     * @param string $pagado
+     *
+     * @return Cheques
+     */
+    public function setPagado($pagado)
+    {
+        $this->pagado = $pagado;
+
+        return $this;
+    }
+
+    /**
+     * Get pagado
+     *
+     * @return string
+     */
+    public function getPagado()
+    {
+        return $this->pagado;
+    }
+
+    /**
+     * Set bancoId
+     *
+     * @param \AppBundle\Entity\Bancos $bancoId
+     *
+     * @return Cheques
+     */
+    public function setBancoId(\AppBundle\Entity\Bancos $bancoId = null)
+    {
+        $this->bancoId = $bancoId;
+
+        return $this;
+    }
+
+    /**
+     * Get bancoId
+     *
+     * @return \AppBundle\Entity\Bancos
+     */
+    public function getBancoId()
+    {
+        return $this->bancoId;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param \AppBundle\Entity\User $userId
+     *
+     * @return Cheques
+     */
+    public function setUserId(\AppBundle\Entity\User $userId = null)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set diasRestantes
+     *
+     * @param string $diasRestantes
+     *
+     * @return Cheques
+     */
+    public function setDiasRestantes($diasRestantes)
+    {
+        $this->diasRestantes = $diasRestantes;
+
+        return $this;
+    }
+
+    /**
+     * Get diasRestantes
+     *
+     * @return string
+     */
+    public function getDiasRestantes()
+    {
+        return $this->diasRestantes;
+    }
+
+    /**
+     * Set valor
+     *
+     * @param string $valor
+     *
+     * @return Cheques
+     */
+    public function setValor($valor)
+    {
+        $this->valor = $valor;
+
+        return $this;
+    }
+
+    /**
+     * Get valor
+     *
+     * @return string
+     */
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     *
+     * @return Cheques
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+}

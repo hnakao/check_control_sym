@@ -1,0 +1,130 @@
+<!--
+*
+*  INSPINIA - Responsive Admin Theme
+*  version 2.7.1
+*
+-->
+
+<!DOCTYPE html>
+<html>
+
+
+    <!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Oct 2017 15:20:52 GMT -->
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Control Check</title>
+
+        <link href="{{ asset('assets/inspinia/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/inspinia/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+
+        <!-- Toastr style -->
+        <link href="{{ asset('assets/inspinia/') }}css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+        <!-- Gritter -->
+        <link href="{{ asset('assets/inspinia/') }}js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+        <link href="{{ asset('assets/inspinia/') }}css/animate.css" rel="stylesheet">
+        <link href="{{ asset('assets/inspinia/') }}css/style.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset('assets/alertify/') }}css/alertify.core.css" />
+        <link rel="stylesheet" href="{{ asset('assets/alertify/') }}css/alertify.default.css" id="toggleCSS" />
+
+        <link href="{{ asset('assets/inspinia/') }}css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
+        <link href="{{ asset('assets/inspinia/') }}css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+        <link href="{{ asset('assets/inspinia/') }}css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div id="wrapper">
+            {% block left %}
+                {{ include(':blocks:left-menu.html.twig') }}
+            {% endblock %}
+
+            <div id="page-wrapper" class="gray-bg dashbard-1">
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                        <ul class="nav navbar-top-links navbar-right">
+
+                            <li>
+                                <a  href="{{ path('fos_user_security_logout') }}">
+                                    <i class="fa fa-sign-out"></i> Log out
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                </div>
+
+                {% block body %} {% endblock %}
+
+            </div>
+
+
+
+        </div>
+
+        <!-- Mainly scripts -->
+        <script src="{{ asset('assets/inspinia/') }}js/jquery-3.1.1.min.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/bootstrap.min.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/dataTables/datatables.min.js"></script>
+
+        <!-- Custom and plugin javascript -->
+        <script src="{{ asset('assets/inspinia/') }}js/inspinia.js"></script>
+        <!-- Flot -->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/flot/jquery.flot.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/flot/jquery.flot.spline.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/flot/jquery.flot.resize.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/flot/jquery.flot.pie.js"></script>
+
+        <!-- Peity -->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/peity/jquery.peity.min.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/demo/peity-demo.js"></script>
+
+        <!-- Custom and plugin javascript -->
+        <script src="{{ asset('assets/inspinia/') }}js/inspinia.js"></script>
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/pace/pace.min.js"></script>
+
+        <!-- jQuery UI -->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+        <!-- GITTER -->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/gritter/jquery.gritter.min.js"></script>
+
+        <!-- Sparkline -->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+        <!-- Sparkline demo data  -->
+        <script src="{{ asset('assets/inspinia/') }}js/demo/sparkline-demo.js"></script>
+
+        <!-- ChartJS-->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/chartJs/Chart.min.js"></script>
+
+        <!-- Toastr -->
+        <script src="{{ asset('assets/inspinia/') }}js/plugins/toastr/toastr.min.js"></script>
+
+        <script src="{{ asset('assets/alertify/') }}js/alertify.min.js"></script>
+
+        <!-- Date range picker -->
+
+
+
+
+
+    </body>
+
+    <!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Oct 2017 15:22:46 GMT -->
+</html>
+

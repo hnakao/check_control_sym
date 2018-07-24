@@ -1,0 +1,110 @@
+/*body {
+    padding-top: 50px;
+}
+#wrapper {
+    width: 100%;
+}
+#page-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.filters-right {
+    float: none;
+}*/
+/*
+ * Sidebar
+ */
+/* Hide for mobile, show later */
+/*@media(min-width:768px) {
+    #page-wrapper {
+        border-left: 1px solid #e7e7e7;
+        margin: 0 0 0 250px;
+        padding: 0 15px;
+        position: inherit;
+    }
+    .sidebar {
+        width: 250px;
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+    .navbar-nav > li {
+        float: none !important;
+    }
+    .filters-right {
+        float: right;
+    }
+}*/
+/*
+ * Global add-ons
+ */
+/*.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
+}*/
+/*
+ * Main content
+ */
+/*.main {
+    padding-top: 5px;
+}
+.main .page-header {
+    margin-top: 0;
+}*/
+/*
+ * Placeholder dashboard ideas
+ */
+/*.placeholders {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.placeholders h4 {
+    margin-bottom: 0;
+}
+.placeholder {
+    margin-bottom: 20px;
+}
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+.likepaginator {
+    margin: 18px 0;
+    float: right;
+}
+.form-errors {
+    padding: 5px;
+}
+.form-errors > ul {
+    list-style: none;
+}
+form.well ul li {
+    border-radius: 3px 3px 3px 3px;
+    padding: 1px 4px 2px;
+    color: #FFFFFF;
+    background-color: #B94A48;
+}*/
+/*PARA LOS BOTONES DISABLED PONGO LA LETRA EN NEGRO*/
+/*.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    color: #000000;
+}
+ul.sub-menu {
+    background: #FFFFFF;
+}
+ul.sub-menu li {
+    padding-left: 5px;
+}*/
+/*PARA LOS SELECT2*/
+/*.select2-offscreen, .select2-offscreen:focus {
+    position: relative !important;
+    width: 100% !important;
+}*/

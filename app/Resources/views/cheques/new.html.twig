@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div style="width: 400px">
+        <h1>Nuevo Cheque</h1>
+
+        <form name="appbundle_cheques" action="{{ path("cheques_new") }}" method="post">
+            <div class="form-group">
+                <label>Número</label>
+                {{ form_widget(form.checkNumber, { 'attr': {'class': 'form-control', 'placeholder':"Número"} }) }}
+            </div>
+
+
+            <div class="form-group">
+                <label>Beneficiario</label>
+                {{ form_widget(form.beneficiary, { 'attr': {'class': 'form-control', 'placeholder':"Beneficiario"} }) }}
+            </div>
+            <div class="form-group">
+                <label>Concepto</label>
+                {{ form_widget(form.concept, { 'attr': {'class': 'form-control', 'placeholder':"Concepto"} }) }}
+            </div>
+            <div class="form-group">
+                <label>Nota</label>
+                {{ form_widget(form.notes, { 'attr': {'class': 'form-control', 'placeholder':"Nota"} }) }}
+            </div>
+            <div class="form-group">
+                <label>Banco</label>
+                {{ form_widget(form.bancoId, { 'attr': {'class': 'form-control', 'placeholder':"Banco"} }) }}
+            </div>
+            <div class="form-group">
+                <label>Emición</label>
+                {{ form_widget(form.emicionDate, { 'attr': {'class': 'form-control', 'placeholder':"Emición"} }) }}
+            </div>
+            <div class="form-group" id="at_date">
+                <label>At Date</label>
+                {{ form_widget(form.atDate, { 'attr': {'class': 'form-control', 'placeholder':"At"} }) }}
+            </div>
+            <div class="form-group" id="post_date">
+                <label>Post Date</label>
+                {{ form_widget(form.postDate, { 'attr': {'class': 'form-control', 'placeholder':"Post"} }) }}
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                {{ form_widget(form.estado, { 'attr': {'class': 'form-control', 'placeholder':"Estado"} }) }}
+            </div>
+            <div class="form-group">
+                <label>Pagado</label>
+                {{ form_widget(form.pagado, { 'attr': {'class': 'form-control', 'placeholder':"Pagado"} }) }}
+            </div>
+            {{ form_widget(form._token) }}
+            <button type="submit" class="btn btn-primary">Añadir</button>
+            <!--{{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Create" />
+            {{ form_end(form) }}
+            -->
+        </form>
+
+        <ul>
+            <li>
+                <a href="{{ path('cheques_index') }}">Back to the list</a>
+            </li>
+        </ul>
+    </div>
+                <script src="{{ asset('assets/inspinia/') }}js/jquery-3.1.1.min.js"></script>
+    <script>
+       
+            $('#at_date').on('click', function () {  // capture the click
+                $("#appbundle_cheques_postDate").val('');
+            });
+            $('#post_date').on('click', function () {  // capture the click
+                $("#appbundle_cheques_atDate").val('');
+            });
+       
+    </script>
+{% endblock %}

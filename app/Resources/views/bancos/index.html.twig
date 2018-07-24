@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bancos</h1>
+    <div class="ibox-content">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Banco</th>
+                        <th>Foto</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for banco in bancos %}
+                        <tr>
+                            <td>{{ banco.nombreBanco }}</td>
+                            <td><img src="{{ asset('bancos/img/') }}{{ banco.fotopath }}" style="height: 50px"></td>
+                            <td>
+                                <div class="btn-group">                                    
+                                    <a class="btn-default btn-sm btn" type="button"  href="#" onclick="Editar({{banco.id}});" >
+                                        <span class="fa fa-edit"></span>
+                                    </a>
+                                </div>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#nuevoBanco">Nuevo Banco</a>
+
+        </div>
+    </div>
+    <div class="modal inmodal fade" id="EditarChekeModal" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Editar</h4>
+                </div>
+                <div class="modal-body" id="editar_content">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal inmodal fade" id="nuevoBanco" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Añadir Banco</h4>
+                </div>
+                <div class="modal-body" id="editar_content">
+                    <form name="appbundle_bancos" action="{{ path('bancos_new') }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Banco</label>
+                            {{ form_widget(form.nombreBanco, { 'attr': {'class': 'form-control', 'placeholder':"Banco"} }) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label>Foto</label>
+                            {{ form_widget(form.foto_path) }}
+                        </div>
+
+                        {{ form_widget(form._token) }}
+                        <button type="submit" class="btn btn-primary block full-width m-b">Añadir</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset('assets/inspinia/') }}js/jquery-3.1.1.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+                                        $(document).ready(function () {
+                                            $('.dataTables-example').DataTable({
+                                                pageLength: 25,
+                                                responsive: true,
+                                                dom: '<"html5buttons"B>lTfgitp',
+                                                buttons: [
+                                                    {extend: 'csv'}
+                                                ]
+
+                                            });
+
+                                        });
+
+    </script>
+    <script>
+        function Editar(id) {
+            var ruta = "{{ path('bancos_index')}}" + id + "/edit";
+            var controlador = ruta.toString();
+
+            $.ajax({url: controlador,
+                type: 'get',
+                data: $(this).serialize(),
+                async: true // veamos con true a ver que pasa
+            })
+
+                    .done(function (html) {
+
+                        $("#editar_content").html(html);
+                        $("#EditarChekeModal").show("fade");
+                        $('#EditarChekeModal').modal('show');
+
+                    })
+                    .fail(function (error) {
+                        console.log("error en mostrar pedido");
+                        //ocultar_loader();
+                    });
+        }
+    </script>
+{% endblock %}

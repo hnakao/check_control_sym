@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Nuevo Cheque</h5>
+
+                </div>
+                <form class="" action="{{ path('cheques_new') }}" method="post">
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.checkNumber) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.checkNumber) }} <div class="error">{{ form_errors(form.checkNumber) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.beneficiary) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.beneficiary) }} <div class="error">{{ form_errors(form.beneficiary) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.concept) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.concept) }} <div class="error">{{ form_errors(form.concept) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.notes) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.notes) }} <div class="error">{{ form_errors(form.notes) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.bancoId) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.bancoId) }} <div class="error">{{ form_errors(form.bancoId) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.atDate) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.atDate) }} <div class="error">{{ form_errors(form.atDate) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.postDate) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.postDate) }} <div class="error">{{ form_errors(form.postDate) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.estado) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.estado) }} <div class="error">{{ form_errors(form.estado) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="control-group">
+                            <label class="control-label">{{ form_label(form.pagado) }}</label>
+                            <div class="controls">
+                                {{ form_widget(form.pagado) }} <div class="error">{{ form_errors(form.pagado) }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group pull-right">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary"><i class="icon-plus-sign"></i> Adicionar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <a href="{{ path('cheques_index') }}">Back to the list</a>
+    </div>
+{% endblock %}
